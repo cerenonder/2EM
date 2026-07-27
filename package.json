@@ -1,0 +1,13 @@
+{
+  "name": "2em-ic-mimarlik-ve-mobilya",
+  "version": "1.0.0",
+  "description": "2EM İç Mimarlık ve Mobilya One-Page Web App",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo Static Site Ready",
+    "start": "serve ."
+  },
+  "keywords": ["architecture", "interior-design", "bespoke-furniture"],
+  "author": "2EM",
+  "license": "MIT"
+}
