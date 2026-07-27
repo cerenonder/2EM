@@ -136,17 +136,22 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .brand-logo img {
-  height: 48px;
+  height: 64px;
   width: auto;
   object-fit: contain;
   background-color: #fff;
-  padding: 4px;
-  border-radius: 2px;
+  padding: 6px 10px;
+  border-radius: 4px;
   transition: var(--transition-fast);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+}
+
+.site-header.scrolled .brand-logo img {
+  height: 54px;
 }
 
 .brand-logo:hover img {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .nav-menu {
@@ -737,17 +742,31 @@ h1, h2, h3, h4, .font-serif {
   line-height: 1.5;
 }
 
-/* Process Section */
-.process-section {
+/* Process Section (Light Luxury Editorial Aesthetic) */
+section.process-section {
   padding: 7rem 0;
-  background-color: #0b0b0e;
-  border-t: 1px solid var(--border-dark);
+  background-color: #f7f7f9 !important;
+  color: #18181b !important;
+  border-top: 1px solid #e4e4e7;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+section.process-section .section-title {
+  color: #18181b !important;
+}
+
+section.process-section .section-title span {
+  color: #71717a !important;
+}
+
+section.process-section .section-desc {
+  color: #52525b !important;
 }
 
 .process-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3rem;
+  gap: 3.5rem;
 }
 
 @media (min-width: 992px) {
@@ -759,41 +778,57 @@ h1, h2, h3, h4, .font-serif {
 .process-steps {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .process-step-item {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border-dark);
+  background-color: #ffffff !important;
+  border: 1px solid #e4e4e7 !important;
   border-radius: 4px;
-  padding: 2rem;
+  padding: 2.25rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
   transition: var(--transition-smooth);
 }
 
 .process-step-item:hover {
-  border-color: var(--accent-gold);
-  background-color: var(--bg-card-hover);
+  border-color: var(--accent-gold) !important;
+  transform: translateX(6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
 }
 
 .step-num {
   font-family: var(--font-heading);
-  font-size: 2.25rem;
+  font-size: 2.5rem;
   color: var(--accent-gold);
   font-weight: 600;
   margin-bottom: 0.5rem;
+  line-height: 1;
 }
 
-.step-title {
-  font-size: 1.15rem;
-  color: #fff;
+section.process-section .step-title {
+  font-size: 1.2rem;
+  color: #18181b !important;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
 }
 
-.step-desc {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  line-height: 1.6;
+section.process-section .step-desc {
+  font-size: 0.92rem;
+  color: #52525b !important;
+  line-height: 1.65;
+}
+
+section.process-section .btn-primary {
+  background-color: #18181b !important;
+  color: #ffffff !important;
+  border-color: #18181b !important;
+}
+
+section.process-section .btn-primary:hover {
+  background-color: var(--accent-gold) !important;
+  border-color: var(--accent-gold) !important;
+  color: #ffffff !important;
 }
 
 /* References Section */
@@ -1032,11 +1067,12 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .footer-brand img {
-  height: 48px;
+  height: 64px;
   background-color: #fff;
-  padding: 4px;
-  border-radius: 2px;
+  padding: 6px 10px;
+  border-radius: 4px;
   margin-bottom: 1.25rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
 
 .footer-brand p {
