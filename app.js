@@ -273,15 +273,20 @@ document.addEventListener('DOMContentLoaded', () => {
       langBtn.textContent = currentLang;
 
       if (currentLang === 'EN') {
+        document.documentElement.setAttribute('lang', 'en');
         document.querySelectorAll('[data-tr]').forEach(el => {
           if (!el.hasAttribute('data-tr-original')) {
             el.setAttribute('data-tr-original', el.innerHTML);
           }
           if (el.hasAttribute('data-en')) {
-            el.innerHTML = el.getAttribute('data-en');
+            let textEn = el.getAttribute('data-en');
+            // Clean up Turkish dotted İ to standard Latin I
+            textEn = textEn.replace(/İ/g, 'I');
+            el.innerHTML = textEn;
           }
         });
       } else {
+        document.documentElement.setAttribute('lang', 'tr');
         document.querySelectorAll('[data-tr]').forEach(el => {
           if (el.hasAttribute('data-tr-original')) {
             el.innerHTML = el.getAttribute('data-tr-original');
