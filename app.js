@@ -4,7 +4,7 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Header & Navigation Logic
+  // 1. Header ve Navigation Logic
   const header = document.getElementById('siteHeader');
   const menuToggle = document.getElementById('menuToggle');
   const navMenu = document.getElementById('navMenu');
@@ -64,90 +64,72 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSlides[currentSlide].classList.add('active');
   }
 
-  setInterval(nextSlide, 6000);
+  // Slayt geçiş hızı (4.2 saniye)
+  setInterval(nextSlide, 4200);
 
-  // 3. Project Portfolio Data & Filtering
+  // 3. Project Portfolio Data ve Filtering
   const projectItems = [
     {
-      id: 1,
-      title: 'Istinye Waterside Villa',
-      category: 'villa',
-      categoryLabel: 'Villa & Konut',
-      location: 'İstanbul, Türkiye',
-      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80',
-      description: 'Boğaz manzarasında masif ceviz kaplama, özel İtalyan mermeri yemek alanı ve 3D entegre aydınlatmalı mobilya üretimi.'
+      id: 101,
+      title: 'August Boutique & Patisserie Counter',
+      image: 'assets/projects/august_patisserie_1.jpg'
     },
     {
-      id: 2,
-      title: 'Katara Hills Hilton Resort',
-      category: 'otel',
-      categoryLabel: 'Otel & FF&E',
-      location: 'Doha, Katar',
-      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=80',
-      description: 'LXR Hotels & Resorts bünyesinde 34 adet lüks vikanın özel mobilya, panelleme ve FF&E üretimi.'
+      id: 102,
+      title: 'August Boutique Display & Wall Panel',
+      image: 'assets/projects/august_patisserie_2.jpg'
     },
     {
-      id: 3,
-      title: 'Grand Soho Luxury Suite Hotel',
-      category: 'otel',
-      categoryLabel: 'Otel & FF&E',
-      location: 'New York, ABD',
-      image: 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=80',
-      description: 'New York şehir merkezinde 120 odalı boutique otel için havacılık kalitesinde pirinç ve lake mobilyalar.'
+      id: 103,
+      title: 'August Seating & Table Lounge',
+      image: 'assets/projects/august_patisserie_3.jpg'
     },
     {
-      id: 4,
-      title: 'Bodrum Loft Horizon Residences',
-      category: 'villa',
-      categoryLabel: 'Villa & Konut',
-      location: 'Bodrum, Muğla',
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80',
-      description: 'Doğal taş ve masif meşe dokularıyla bezeli özel üretim oturma takımları ve giyinme odaları.'
+      id: 109,
+      title: 'Panoramik Cam Tavan Teras Büfe & Kafe',
+      image: 'assets/projects/project_9.jpg'
     },
     {
-      id: 5,
-      title: 'Azure Mayfair Mega Yacht',
-      category: 'yat',
-      categoryLabel: 'Yat & Marine',
-      location: 'Monako / İstanbul',
-      image: 'https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?auto=format&fit=crop&w=1200&q=80',
-      description: '55 metrelik süperyat için marin standartlarında suya ve neme dayanıklı teak & deri kaplama mobilyalar.'
+      id: 105,
+      title: 'August Exterior Facade & Outdoor Lounge',
+      image: 'assets/projects/august_patisserie_5.jpg'
     },
     {
-      id: 6,
-      title: 'Vanguard Headquarters B2B',
-      category: 'kurumsal',
-      categoryLabel: 'Kurumsal & B2B',
-      location: 'Maslak, İstanbul',
-      image: 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1200&q=80',
-      description: 'Yönetim kurulu toplantı masaları, ses yalıtımlı ahşap paneller ve akustik özel tasarım dinlenme alanları.'
+      id: 107,
+      title: 'Panoramik Cam Tavan Restoran & Avize Lounge',
+      image: 'assets/projects/project_7.jpg'
+    },
+    {
+      id: 108,
+      title: 'Lüks Yatak Odası Suite & Giyinme Odası',
+      image: 'assets/projects/project_8.jpg'
+    },
+    {
+      id: 110,
+      title: 'Modern Lüks Salon & TV Ünitesi & Yemek Alanı',
+      image: 'assets/projects/project_10.jpg'
+    },
+    {
+      id: 112,
+      title: 'Lüks Yatak Odası & Özel Ahşap Giyinme Dolabı',
+      image: 'assets/projects/project_12.jpg'
     }
   ];
 
   const projectsGrid = document.getElementById('projectsGrid');
-  const filterBtns = document.querySelectorAll('.filter-btn');
 
-  function renderProjects(filter = 'all') {
+  function renderProjects() {
     if (!projectsGrid) return;
     projectsGrid.innerHTML = '';
 
-    const filtered = filter === 'all' 
-      ? projectItems 
-      : projectItems.filter(p => p.category === filter);
-
-    filtered.forEach(p => {
+    projectItems.forEach(p => {
       const card = document.createElement('div');
       card.className = 'project-card';
       card.setAttribute('data-id', p.id);
       card.innerHTML = `
         <div class="project-thumb">
-          <img src="${p.image}" alt="${p.title}" loading="lazy">
-          <span class="project-tag-badge">${p.categoryLabel}</span>
-        </div>
-        <div class="project-info">
-          <h3 class="project-title">${p.title}</h3>
-          <p class="project-location"><i class="fas fa-map-marker-alt" style="color: var(--accent-gold); margin-right: 4px;"></i> ${p.location}</p>
-          <span class="project-link">Detayları İncele <i class="fas fa-arrow-right"></i></span>
+          <img src="${p.image}" alt="2EM Mimarlık Proje Görseli" loading="lazy">
+          <div class="project-overlay-icon"><i class="fas fa-search-plus"></i></div>
         </div>
       `;
       card.addEventListener('click', () => openProjectModal(p));
@@ -155,15 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  renderProjects('all');
+  renderProjects();
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderProjects(btn.getAttribute('data-filter'));
-    });
-  });
+
 
   // 4. Products / Collections Tabs
   const tabBtns = document.querySelectorAll('.tab-btn');
@@ -193,9 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
   function openProjectModal(p) {
     if (!projectModal) return;
     modalImg.src = p.image;
-    modalTitle.textContent = p.title;
-    modalLoc.textContent = `${p.categoryLabel} | ${p.location}`;
-    modalDesc.textContent = p.description;
     projectModal.classList.add('active');
   }
 
@@ -205,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 6. Interactive Quote & Consultation Modal Logic
+  // 6. Interactive Quote ve Consultation Modal Logic
   const quoteModal = document.getElementById('quoteModal');
   const quoteModalClose = document.getElementById('quoteModalClose');
   const triggerButtons = document.querySelectorAll('[data-open-quote]');
@@ -234,45 +207,59 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Quote Form Instant Simulation Logic
-  const quoteForm = document.getElementById('quoteForm');
-  const projectTypeSelect = document.getElementById('projectType');
-  const projectAreaInput = document.getElementById('projectArea');
-  const estimateBox = document.getElementById('estimateResult');
-
-  function updateEstimate() {
-    if (!projectTypeSelect || !projectAreaInput || !estimateBox) return;
-    const type = projectTypeSelect.value;
-    const area = parseFloat(projectAreaInput.value) || 0;
-
-    let baseWeeks = 4;
-    let ratePerSqM = 350;
-
-    if (type === 'hotel') { baseWeeks = 10; ratePerSqM = 500; }
-    else if (type === 'villa') { baseWeeks = 8; ratePerSqM = 450; }
-    else if (type === 'yacht') { baseWeeks = 12; ratePerSqM = 800; }
-
-    const calculatedWeeks = Math.max(baseWeeks, Math.round(baseWeeks + (area / 100) * 2));
-    const totalEstimate = area > 0 ? (area * ratePerSqM).toLocaleString('tr-TR') : 0;
-
-    estimateBox.innerHTML = `
-      <div style="background: rgba(197, 160, 89, 0.1); border: 1px solid var(--accent-gold); padding: 1rem; border-radius: 4px; margin-top: 1rem;">
-        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;">Tahmini Üretim ve Montaj Süresi</span>
-        <strong style="font-size: 1.2rem; color: #fff;">${calculatedWeeks} - ${calculatedWeeks + 3} Hafta</strong>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.4rem;">Modoko tesislerimizde 3D render onayı sonrası imalat başlar.</p>
-      </div>
-    `;
-  }
-
-  if (projectTypeSelect) projectTypeSelect.addEventListener('change', updateEstimate);
-  if (projectAreaInput) projectAreaInput.addEventListener('input', updateEstimate);
-
   if (quoteForm) {
     quoteForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Talebiniz başarıyla 2EM İç Mimarlık ve Mobilya ekibimize ulaştı! 24 saat içerisinde mimarlarımız sizinle iletişime geçecektir.');
-      quoteModal.classList.remove('active');
-      quoteForm.reset();
+
+      const name = document.getElementById('quoteName')?.value?.trim() || '';
+      const phone = document.getElementById('quotePhone')?.value?.trim() || '';
+      const email = document.getElementById('quoteEmail')?.value?.trim() || '';
+      const note = document.getElementById('quoteNote')?.value?.trim() || '';
+
+      let messageText = `Merhaba 2EM İç Mimarlık & Mobilya,\nWeb sitenizden yeni bir teklif/danışmanlık talebi oluşturuldu:\n\n` +
+        `• Ad Soyad: ${name}\n` +
+        `• Telefon: ${phone}\n` +
+        `• E-posta: ${email || 'Belirtilmedi'}`;
+
+      if (note) {
+        messageText += `\n• Proje Detayı / Notlar: ${note}`;
+      }
+
+      const encodedMsg = encodeURIComponent(messageText);
+      const wa1 = `https://wa.me/905518601842?text=${encodedMsg}`;
+      const wa2 = `https://wa.me/905374478191?text=${encodedMsg}`;
+
+      // Open WhatsApp for 1st number automatically
+      window.open(wa1, '_blank');
+
+      // Update modal UI to provide direct access to send to both numbers
+      const modalBody = quoteModal.querySelector('.modal-content');
+      if (modalBody) {
+        modalBody.innerHTML = `
+          <button class="modal-close" onclick="location.reload()">&times;</button>
+          <div style="text-align: center; padding: 1.5rem 0;">
+            <i class="fas fa-check-circle" style="font-size: 3.5rem; color: #25D366; margin-bottom: 1rem;"></i>
+            <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 0.5rem; text-transform: uppercase;">Talebiniz Hazırlandı!</h3>
+            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
+              Talebiniz 1. numaraya otomatik yönlendirildi. Her iki yetkiliye de mesajı iletmek için aşağıdaki butonları kullanabilirsiniz:
+            </p>
+            
+            <div style="display: flex; flex-direction: column; gap: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
+              <a href="${wa1}" target="_blank" class="btn-primary" style="background-color: #25D366; border-color: #25D366; color: #fff; justify-content: center; font-size: 0.85rem;">
+                <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> 1. Yetkiliye Gönder (0551 860 18 42)
+              </a>
+              <a href="${wa2}" target="_blank" class="btn-primary" style="background-color: #128C7E; border-color: #128C7E; color: #fff; justify-content: center; font-size: 0.85rem;">
+                <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> 2. Yetkiliye Gönder (0537 447 81 91)
+              </a>
+              <button onclick="window.open('${wa1}', '_blank'); setTimeout(() => window.open('${wa2}', '_blank'), 300);" class="btn-outline" style="justify-content: center; font-size: 0.8rem; border-color: var(--accent-gold); color: var(--accent-gold);">
+                <i class="fas fa-paper-plane"></i> Her İki Numaraya Da Gönder
+              </button>
+            </div>
+
+            <button onclick="location.reload()" class="btn-outline" style="font-size: 0.75rem;">Tamam / Kapat</button>
+          </div>
+        `;
+      }
     });
   }
 

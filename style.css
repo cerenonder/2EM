@@ -63,6 +63,16 @@ h1, h2, h3, h4, .font-serif {
   letter-spacing: -0.02em;
 }
 
+/* Simple Modern Minimalist Ampersand */
+.amp {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: inherit;
+  color: var(--accent-gold);
+  padding: 0 0.05em;
+  display: inline;
+}
+
 .section-tag {
   display: inline-flex;
   align-items: center;
@@ -75,11 +85,23 @@ h1, h2, h3, h4, .font-serif {
   margin-bottom: 1.25rem;
 }
 
+.hero .section-tag {
+  font-size: 0.95rem;
+  letter-spacing: 0.22em;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
 .section-tag::before {
   content: '';
   width: 2rem;
   height: 1px;
   background-color: var(--accent-gold);
+}
+
+.hero .section-tag::before {
+  width: 2.2rem;
+  height: 2px;
 }
 
 .section-title {
@@ -136,18 +158,17 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .brand-logo img {
-  height: 64px;
+  height: 68px;
   width: auto;
   object-fit: contain;
-  background-color: #fff;
-  padding: 6px 10px;
-  border-radius: 4px;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
   transition: var(--transition-fast);
-  box-shadow: 0 4px 14px rgba(0,0,0,0.35);
 }
 
 .site-header.scrolled .brand-logo img {
-  height: 54px;
+  height: 56px;
 }
 
 .brand-logo:hover img {
@@ -320,16 +341,8 @@ h1, h2, h3, h4, .font-serif {
 }
 
 .hero-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 3rem;
-}
-
-@media (min-width: 992px) {
-  .hero-grid {
-    grid-template-columns: 1.2fr 0.8fr;
-    align-items: flex-end;
-  }
+  display: block;
+  max-width: 760px;
 }
 
 .hero-subtitle {
@@ -588,7 +601,7 @@ h1, h2, h3, h4, .font-serif {
 .project-thumb {
   position: relative;
   width: 100%;
-  height: 320px;
+  height: 380px;
   overflow: hidden;
 }
 
@@ -601,6 +614,33 @@ h1, h2, h3, h4, .font-serif {
 
 .project-card:hover .project-thumb img {
   transform: scale(1.08);
+}
+
+.project-overlay-icon {
+  position: absolute;
+  inset: 0;
+  background: rgba(9, 9, 11, 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: var(--transition-fast);
+}
+
+.project-overlay-icon i {
+  font-size: 2.2rem;
+  color: var(--accent-gold);
+  transform: scale(0.7);
+  transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-overlay-icon {
+  opacity: 1;
+}
+
+.project-card:hover .project-overlay-icon i {
+  transform: scale(1);
 }
 
 .project-tag-badge {
@@ -742,25 +782,25 @@ h1, h2, h3, h4, .font-serif {
   line-height: 1.5;
 }
 
-/* Process Section (Light Luxury Editorial Aesthetic) */
+/* Process Section (Dark Luxury Aesthetic) */
 section.process-section {
   padding: 7rem 0;
-  background-color: #f7f7f9 !important;
-  color: #18181b !important;
-  border-top: 1px solid #e4e4e7;
-  border-bottom: 1px solid #e4e4e7;
+  background-color: var(--bg-dark) !important;
+  color: var(--text-main) !important;
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
 }
 
 section.process-section .section-title {
-  color: #18181b !important;
+  color: #ffffff !important;
 }
 
 section.process-section .section-title span {
-  color: #71717a !important;
+  color: var(--accent-gold) !important;
 }
 
 section.process-section .section-desc {
-  color: #52525b !important;
+  color: var(--text-muted) !important;
 }
 
 .process-grid {
@@ -782,18 +822,18 @@ section.process-section .section-desc {
 }
 
 .process-step-item {
-  background-color: #ffffff !important;
-  border: 1px solid #e4e4e7 !important;
+  background-color: var(--bg-card) !important;
+  border: 1px solid var(--border-dark) !important;
   border-radius: 4px;
   padding: 2.25rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: var(--transition-smooth);
 }
 
 .process-step-item:hover {
   border-color: var(--accent-gold) !important;
   transform: translateX(6px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
 }
 
 .step-num {
@@ -807,7 +847,7 @@ section.process-section .section-desc {
 
 section.process-section .step-title {
   font-size: 1.2rem;
-  color: #18181b !important;
+  color: #ffffff !important;
   text-transform: uppercase;
   margin-bottom: 0.75rem;
   letter-spacing: -0.01em;
@@ -815,19 +855,19 @@ section.process-section .step-title {
 
 section.process-section .step-desc {
   font-size: 0.92rem;
-  color: #52525b !important;
+  color: var(--text-muted) !important;
   line-height: 1.65;
 }
 
 section.process-section .btn-primary {
-  background-color: #18181b !important;
+  background-color: var(--accent-gold) !important;
   color: #ffffff !important;
-  border-color: #18181b !important;
+  border-color: var(--accent-gold) !important;
 }
 
 section.process-section .btn-primary:hover {
-  background-color: var(--accent-gold) !important;
-  border-color: var(--accent-gold) !important;
+  background-color: #a88344 !important;
+  border-color: #a88344 !important;
   color: #ffffff !important;
 }
 
