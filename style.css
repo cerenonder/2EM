@@ -1280,29 +1280,16 @@ section.process-section .btn-primary:hover {
 
   /* Factory Showcase Card Mobile */
   .factory-card {
-    display: flex;
-    flex-direction: column;
+    display: block !important;
   }
 
   .factory-img {
-    height: 260px !important;
-    max-height: 260px !important;
+    height: auto !important;
+    max-height: none !important;
   }
 
   .factory-overlay {
-    position: relative !important;
-    background: #121215 !important;
-    padding: 1.5rem 1.25rem !important;
-  }
-
-  .factory-title {
-    font-size: 1.35rem !important;
-  }
-
-  .factory-overlay .btn-primary {
-    width: 100%;
-    justify-content: center;
-    margin-top: 0.75rem;
+    display: none !important;
   }
 
   /* Studio & Process */
