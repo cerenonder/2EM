@@ -1280,16 +1280,37 @@ section.process-section .btn-primary:hover {
 
   /* Factory Showcase Card Mobile */
   .factory-card {
-    display: block !important;
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .factory-img {
-    height: auto !important;
-    max-height: none !important;
+    height: 240px !important;
+    max-height: 240px !important;
+    object-fit: cover !important;
   }
 
   .factory-overlay {
-    display: none !important;
+    display: block !important;
+    position: relative !important;
+    background: #0e0e11 !important;
+    padding: 1.5rem 1.25rem !important;
+    border-top: 1px solid var(--border-dark) !important;
+  }
+
+  .factory-title {
+    font-size: 1.3rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .factory-overlay p {
+    font-size: 0.85rem !important;
+  }
+
+  .factory-overlay .btn-primary {
+    width: 100% !important;
+    justify-content: center !important;
+    margin-top: 1rem !important;
   }
 
   /* Studio & Process */
