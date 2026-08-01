@@ -229,37 +229,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const wa1 = `https://wa.me/905518601842?text=${encodedMsg}`;
       const wa2 = `https://wa.me/905374478191?text=${encodedMsg}`;
 
-      // Open WhatsApp for 1st number automatically
+      // Open BOTH WhatsApp numbers directly in separate tabs
       window.open(wa1, '_blank');
+      setTimeout(() => {
+        window.open(wa2, '_blank');
+      }, 300);
 
-      // Update modal UI to provide direct access to send to both numbers
-      const modalBody = quoteModal.querySelector('.modal-content');
-      if (modalBody) {
-        modalBody.innerHTML = `
-          <button class="modal-close" onclick="location.reload()">&times;</button>
-          <div style="text-align: center; padding: 1.5rem 0;">
-            <i class="fas fa-check-circle" style="font-size: 3.5rem; color: #25D366; margin-bottom: 1rem;"></i>
-            <h3 style="font-size: 1.6rem; color: #fff; margin-bottom: 0.5rem; text-transform: uppercase;">Talebiniz Hazırlandı!</h3>
-            <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.6;">
-              Talebiniz 1. numaraya otomatik yönlendirildi. Her iki yetkiliye de mesajı iletmek için aşağıdaki butonları kullanabilirsiniz:
-            </p>
-            
-            <div style="display: flex; flex-direction: column; gap: 0.85rem; max-width: 420px; margin: 0 auto 1.5rem auto;">
-              <a href="${wa1}" target="_blank" class="btn-primary" style="background-color: #25D366; border-color: #25D366; color: #fff; justify-content: center; font-size: 0.85rem;">
-                <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> 1. Yetkiliye Gönder (0551 860 18 42)
-              </a>
-              <a href="${wa2}" target="_blank" class="btn-primary" style="background-color: #128C7E; border-color: #128C7E; color: #fff; justify-content: center; font-size: 0.85rem;">
-                <i class="fab fa-whatsapp" style="font-size: 1.2rem;"></i> 2. Yetkiliye Gönder (0537 447 81 91)
-              </a>
-              <button onclick="window.open('${wa1}', '_blank'); setTimeout(() => window.open('${wa2}', '_blank'), 300);" class="btn-outline" style="justify-content: center; font-size: 0.8rem; border-color: var(--accent-gold); color: var(--accent-gold);">
-                <i class="fas fa-paper-plane"></i> Her İki Numaraya Da Gönder
-              </button>
-            </div>
-
-            <button onclick="location.reload()" class="btn-outline" style="font-size: 0.75rem;">Tamam / Kapat</button>
-          </div>
-        `;
+      // Close modal cleanly immediately
+      if (quoteModal) {
+        quoteModal.classList.remove('active');
       }
+      quoteForm.reset();
     });
   }
 
