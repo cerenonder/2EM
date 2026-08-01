@@ -1365,6 +1365,10 @@ section.process-section .btn-primary:hover {
     gap: 1.25rem;
   }
 
+  .footer-bottom-social {
+    display: none !important;
+  }
+
   /* Modals */
   .modal-content {
     padding: 1.5rem 1.25rem !important;
