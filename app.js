@@ -229,13 +229,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const wa1 = `https://wa.me/905518601842?text=${encodedMsg}`;
       const wa2 = `https://wa.me/905374478191?text=${encodedMsg}`;
 
-      // Open BOTH WhatsApp numbers directly in separate tabs
-      window.open(wa1, '_blank');
-      setTimeout(() => {
-        window.open(wa2, '_blank');
-      }, 300);
+      // Detect mobile device to ensure 100% fail-safe WhatsApp application launch
+      const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-      // Close modal cleanly immediately
+      if (isMobile) {
+        // Direct location redirect on mobile prevents popup blocker issues
+        window.location.href = wa1;
+      } else {
+        window.open(wa1, '_blank');
+        setTimeout(() => {
+          window.open(wa2, '_blank');
+        }, 400);
+      }
+
+      // Close modal cleanly
       if (quoteModal) {
         quoteModal.classList.remove('active');
       }
