@@ -1166,19 +1166,41 @@ section.process-section .btn-primary:hover {
 
 /* Responsive Overrides */
 @media (max-width: 991px) {
+  .site-header {
+    padding: 0.85rem 0;
+  }
+
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-actions {
+    border-left: none;
+    padding-left: 0;
+    margin-top: 0;
+    gap: 0.75rem;
+  }
+
+  /* Hide header 'Teklif Al' button in top bar on mobile screens to prevent overlap */
+  .site-header .nav-actions .btn-primary {
+    display: none !important;
+  }
+
   .nav-menu {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 80%;
-    max-width: 380px;
+    width: 85%;
+    max-width: 360px;
     height: 100vh;
     background-color: rgba(9, 9, 11, 0.98);
     backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    padding: 3rem 2.5rem;
+    padding: 3rem 2rem;
     transition: right 0.4s ease;
     z-index: 999;
   }
@@ -1191,12 +1213,6 @@ section.process-section .btn-primary:hover {
     display: block;
     z-index: 1001;
   }
-
-  .nav-actions {
-    border-left: none;
-    padding-left: 0;
-    margin-top: 1.5rem;
-  }
 }
 
 /* Comprehensive Mobile Responsiveness (< 768px) */
@@ -1205,18 +1221,14 @@ section.process-section .btn-primary:hover {
     padding: 0 1.25rem;
   }
 
-  .site-header {
-    padding: 0.75rem 0;
-  }
-
   .brand-logo img {
-    height: 48px;
+    height: 42px;
   }
 
   /* Hero Section */
   .hero {
     min-height: auto;
-    padding: 7rem 0 4rem;
+    padding: 8.5rem 0 4rem !important;
   }
 
   .hero-title {
