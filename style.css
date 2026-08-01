@@ -1149,7 +1149,7 @@ section.process-section .btn-primary:hover {
 }
 
 .footer-bottom {
-  border-t: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border-dark);
   padding-top: 2rem;
   display: flex;
   flex-wrap: wrap;
@@ -1157,6 +1157,11 @@ section.process-section .btn-primary:hover {
   align-items: center;
   gap: 1rem;
   font-size: 0.8rem;
+}
+
+.footer-bottom a:hover {
+  transform: scale(1.18);
+  color: var(--accent-gold-hover) !important;
 }
 
 /* Responsive Overrides */
