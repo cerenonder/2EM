@@ -285,6 +285,11 @@ document.addEventListener('DOMContentLoaded', () => {
             el.innerHTML = textEn;
           }
         });
+
+        const nameInput = document.getElementById('quoteName');
+        const noteInput = document.getElementById('quoteNote');
+        if (nameInput) nameInput.placeholder = 'e.g. John Doe';
+        if (noteInput) noteInput.placeholder = 'e.g. Villa living room furniture, store concept design or any questions...';
       } else {
         document.documentElement.setAttribute('lang', 'tr');
         document.querySelectorAll('[data-tr]').forEach(el => {
@@ -292,6 +297,11 @@ document.addEventListener('DOMContentLoaded', () => {
             el.innerHTML = el.getAttribute('data-tr-original');
           }
         });
+
+        const nameInput = document.getElementById('quoteName');
+        const noteInput = document.getElementById('quoteNote');
+        if (nameInput) nameInput.placeholder = 'Ahmet Yılmaz';
+        if (noteInput) noteInput.placeholder = 'Örn: Villa salon mobilyası, mağaza konsept tasarımı veya sormak istediğiniz sorular...';
       }
     });
   }
