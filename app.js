@@ -222,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `• E-posta: ${email || 'Belirtilmedi'}`;
 
       if (note) {
-        messageText += `\n• Proje Detayı / Notlar: ${note}`;
+        messageText += `\n• Proje Detayı: ${note}`;
       }
 
       const encodedMsg = encodeURIComponent(messageText);
