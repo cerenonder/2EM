@@ -274,15 +274,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (currentLang === 'EN') {
         document.querySelectorAll('[data-tr]').forEach(el => {
-          el.setAttribute('data-tr-original', el.textContent);
+          if (!el.hasAttribute('data-tr-original')) {
+            el.setAttribute('data-tr-original', el.innerHTML);
+          }
           if (el.hasAttribute('data-en')) {
-            el.textContent = el.getAttribute('data-en');
+            el.innerHTML = el.getAttribute('data-en');
           }
         });
       } else {
         document.querySelectorAll('[data-tr]').forEach(el => {
           if (el.hasAttribute('data-tr-original')) {
-            el.textContent = el.getAttribute('data-tr-original');
+            el.innerHTML = el.getAttribute('data-tr-original');
           }
         });
       }
