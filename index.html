@@ -79,9 +79,9 @@
       <div class="hero-grid">
         <div>
           <span class="section-tag" data-tr="2EM İÇ MİMARLIK & MOBİLYA" data-en="2EM ARCHITECTURE & FURNITURE">2EM İÇ MİMARLIK <span class="amp">&</span> MOBİLYA</span>
-          <h1 class="hero-title" data-tr="Zamansız Mimari.<br><span class='text-muted'>Şiirsel Zanaat.</span>"
+          <h1 class="hero-title" data-tr="Özgün Mimari.<br><span class='text-muted'>Şiirsel Zanaat.</span>"
             data-en="Timeless Architecture.<br><span class='text-muted'>Poetic Craftsmanship.</span>">
-            Zamansız Mimari.<br>
+            Özgün Mimari.<br>
             <span class="text-muted">Şiirsel Zanaat.</span>
           </h1>
           <p class="hero-desc"
@@ -138,9 +138,9 @@
             Yaşam Alanlarını<br><span>Şaheserlere</span> Dönüştürüyoruz
           </h2>
           <p class="section-desc"
-            data-tr="Özel İç Mimari, Zanaatkar Mükemmelliğiyle Buluşuyor. 2EM Tasarım Stüdyomuz, mimari vizyon ile usta üretimin kesişim noktasını temsil eder. Çağdaş sofistikasyonu zamansız zarafetle harmanlıyoruz."
+            data-tr="Özel İç Mimari, Zanaatkar Mükemmelliğiyle Buluşuyor. 2EM Tasarım Stüdyomuz, mimari vizyon ile usta üretimin kesişim noktasını temsil eder. Çağdaş sofistikasyonu özgün zarafetle harmanlıyoruz."
             data-en="Custom interior design meets artisanal perfection. 2EM Design Studio balances bold architectural vision with master workshop execution.">
-            Özel İç Mimari, Zanaatkar Mükemmelliğiyle Buluşuyor. 2EM Tasarım Stüdyomuz, mimari vizyon ile usta üretimin kesişim noktasını temsil eder. Çağdaş sofistikasyonu zamansız zarafetle harmanlıyoruz.
+            Özel İç Mimari, Zanaatkar Mükemmelliğiyle Buluşuyor. 2EM Tasarım Stüdyomuz, mimari vizyon ile usta üretimin kesişim noktasını temsil eder. Çağdaş sofistikasyonu özgün zarafetle harmanlıyoruz.
           </p>
           <div class="studio-feature-list">
             <div class="studio-feature">
@@ -152,6 +152,13 @@
               </div>
             </div>
 
+            <div class="studio-feature" style="margin-top: 1.25rem;">
+              <div class="studio-feature-icon"><i class="fas fa-hammer"></i></div>
+              <div>
+                <strong style="color: #fff; display: block; font-size: 0.95rem;" data-tr="Kendi Atölyemizde Doğrudan İmalat" data-en="Direct Manufacturing in Our Workshop">Kendi Atölyemizde Doğrudan İmalat</strong>
+                <p style="font-size: 0.85rem; color: var(--text-muted);" data-tr="Tasarladığımız tüm mobilya, mermer ve ahşap imalatları aracı kullanmadan kendi atölyelerimizde usta ellerle üretiyoruz." data-en="We produce all furniture, marble, and custom fabrications directly in our own workshops with master craftsmen without intermediaries.">Tasarladığımız tüm mobilya, mermer ve ahşap imalatları aracı kullanmadan kendi atölyelerimizde usta ellerle üretiyoruz.</p>
+              </div>
+            </div>
           </div>
 
           <div style="margin-top: 1.5rem;">
@@ -180,8 +187,7 @@
   <!-- ================= PROJECT PORTFOLIO SHOWCASE ================= -->
   <section class="projects-section" id="projects">
     <div class="container">
-      <div
-        style="display: flex; flex-direction: column; md:flex-row; justify-content: space-between; align-items: flex-start; margin-bottom: 2.5rem;">
+      <div class="projects-header-wrapper">
         <div>
           <span class="section-tag" data-tr="PORTFÖY & PROJELER" data-en="PORTFOLIO & PROJECTS">PORTFÖY <span class="amp">&</span> PROJELER</span>
           <h2 class="section-title" data-tr="Seçkin <span>Mimari İmzalarımız</span>"
@@ -189,9 +195,22 @@
             Seçkin <span>Mimari İmzalarımız</span>
           </h2>
         </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="project-filters" id="projectCategoryFilters">
+          <button class="project-filter-btn active" data-filter="all" data-tr="Tümü" data-en="All">Tümü</button>
+          <button class="project-filter-btn" data-filter="konut" data-tr="Konut" data-en="Residential">Konut</button>
+          <button class="project-filter-btn" data-filter="magaza" data-tr="Mağaza" data-en="Retail & Store">Mağaza</button>
+          <button class="project-filter-btn" data-filter="showroom" data-tr="Showroom" data-en="Showroom">Showroom</button>
+          <button class="project-filter-btn" data-filter="ofis" data-tr="Ofis" data-en="Office">Ofis</button>
+          <button class="project-filter-btn" data-filter="otel" data-tr="Otel" data-en="Hotel">Otel</button>
+          <button class="project-filter-btn" data-filter="restoran-kafe" data-tr="Restoran & Kafe" data-en="Restaurant & Cafe">Restoran <span class="amp">&</span> Kafe</button>
+          <button class="project-filter-btn" data-filter="ic-mekanlar" data-tr="İç Mekan" data-en="Interiors">İç Mekan</button>
+        </div>
       </div>
-      <!-- Projects Grid (Populated dynamically by JavaScript) -->
-      <div class="projects-grid" id="projectsGrid"></div>
+
+      <!-- Projects Grid & Categorized Sections (Populated dynamically by JavaScript) -->
+      <div class="projects-container" id="projectsGrid"></div>
     </div>
   </section>
 
@@ -205,9 +224,9 @@
           Müşteri İsteklerine Özel <span>İmalat <span class="amp">&</span> Zanaat Üretimleri</span>
         </h2>
         <p class="section-desc" style="margin: 1rem auto 0; max-width: 1000px;"
-          data-tr="2EM İç Mimarlık ve Mobilya vizyonunu her gün tasarlayan ve müşterilerine özel çözümler üreten kurucularımızla tanışın."
-          data-en="Meet our team designing the 2EM Architecture & Furniture vision daily and producing bespoke solutions for clients.">
-          2EM İç Mimarlık <span class="amp">&</span> Mobilya vizyonunu her gün tasarlayan ve müşterilerine özel çözümler üreten kurucularımızla tanışın.
+          data-tr="Tüm projelerimizde ahşap, mermer ve özel ölçü mobilya imalatlarını aracı kullanmadan kendi üretim tesislerimizde usta zanaatkarlarımızla gerçekleştiriyoruz."
+          data-en="We manufacture all wooden, marble, and custom furniture items directly in our own production facilities with master craftsmen without intermediaries.">
+          Tüm projelerimizde ahşap, mermer ve özel ölçü mobilya imalatlarını aracı kullanmadan kendi üretim tesislerimizde usta zanaatkarlarımızla gerçekleştiriyoruz.
         </p>
       </div>
 
@@ -363,40 +382,74 @@
         </div>
 
         <div>
-          <h4 class="footer-heading" data-tr="İletişim & Adres" data-en="Contact & Address">İletişim <span class="amp">&</span> Adres</h4>
+          <h4 class="footer-heading" data-tr="İLETİŞİM" data-en="CONTACT">İLETİŞİM</h4>
           
-          <p style="font-size: 0.85rem; margin-bottom: 0.35rem;">
-            <i class="fas fa-phone text-gold"></i> <a href="tel:+905518601842" style="color: inherit; text-decoration: none;">0551 860 18 42</a>
-          </p>
-          <p style="font-size: 0.85rem; margin-bottom: 0.75rem;">
-            <i class="fas fa-phone text-gold"></i> <a href="tel:+905374478191" style="color: inherit; text-decoration: none;">0537 447 81 91</a>
-          </p>
+          <!-- Telefon -->
+          <div style="margin-bottom: 1rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;" data-tr="Telefon" data-en="Phone">Telefon</span>
+            <p style="font-size: 0.85rem; margin-bottom: 0.2rem;">
+              <i class="fas fa-phone text-gold" style="font-size: 0.75rem; margin-right: 6px;"></i> <a href="tel:+905518601842" style="color: inherit; text-decoration: none;">0551 860 18 42</a>
+            </p>
+            <p style="font-size: 0.85rem;">
+              <i class="fas fa-phone text-gold" style="font-size: 0.75rem; margin-right: 6px;"></i> <a href="tel:+905374478191" style="color: inherit; text-decoration: none;">0537 447 81 91</a>
+            </p>
+          </div>
 
-          <p style="font-size: 0.85rem; margin-bottom: 0.35rem;">
-            <i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/905518601842" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 600;">WhatsApp: Emre Gökbayrak</a>
-          </p>
-          <p style="font-size: 0.85rem; margin-bottom: 0.75rem;">
-            <i class="fab fa-whatsapp text-gold"></i> <a href="https://wa.me/905374478191" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 600;">WhatsApp: Yunus Emre Önder</a>
-          </p>
+          <!-- WhatsApp -->
+          <div style="margin-bottom: 1rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-gold); display: block; margin-bottom: 0.35rem;" data-tr="WhatsApp" data-en="WhatsApp">WhatsApp</span>
+            
+            <div style="margin-bottom: 0.5rem;">
+              <strong style="color: #fff; font-size: 0.85rem; display: block; margin-bottom: 0.1rem;">
+                <i class="fab fa-whatsapp text-gold" style="margin-right: 4px;"></i> Emre Gökbayrak
+              </strong>
+              <a href="https://wa.me/905518601842" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 0.8rem; text-decoration: underline; font-weight: 500; transition: color 0.3s ease;" data-tr="WhatsApp ile İletişime Geç" data-en="Contact via WhatsApp">WhatsApp ile İletişime Geç</a>
+            </div>
 
-          <p style="font-size: 0.85rem; margin-bottom: 0.75rem;">
-            <i class="fas fa-envelope text-gold"></i> <a href="mailto:info@2emicmimarlik.com" style="color: inherit; text-decoration: none;">info@2emicmimarlik.com</a>
-          </p>
+            <div>
+              <strong style="color: #fff; font-size: 0.85rem; display: block; margin-bottom: 0.1rem;">
+                <i class="fab fa-whatsapp text-gold" style="margin-right: 4px;"></i> Yunus Emre Önder
+              </strong>
+              <a href="https://wa.me/905374478191" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 0.8rem; text-decoration: underline; font-weight: 500; transition: color 0.3s ease;" data-tr="WhatsApp ile İletişime Geç" data-en="Contact via WhatsApp">WhatsApp ile İletişime Geç</a>
+            </div>
+          </div>
 
-          <p style="font-size: 0.85rem; margin-bottom: 0.35rem;">
-            <i class="fas fa-map-marker-alt text-gold"></i> Hürriyet Mah. 90. Sok. No:12/A Bağcılar / İstanbul
-          </p>
-          <p style="font-size: 0.8rem; margin-top: 0.2rem;">
-            <a href="https://www.google.com/maps/search/?api=1&query=2EM+İç+Mimarlık+Hürriyet+Mah.+90.+Sok.+No:12/A+Bağcılar+İstanbul" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); text-decoration: underline; font-weight: 600;" data-tr="<i class='fas fa-directions'></i> Haritada Konumu Göster (Google Maps)" data-en="<i class='fas fa-directions'></i> View Location on Google Maps"><i class="fas fa-directions"></i> Haritada Konumu Göster (Google Maps)</a>
-          </p>
+          <!-- E-posta -->
+          <div style="margin-bottom: 1rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;" data-tr="E-posta" data-en="Email">E-posta</span>
+            <p style="font-size: 0.85rem;">
+              <i class="fas fa-envelope text-gold" style="font-size: 0.75rem; margin-right: 6px;"></i> <a href="mailto:2emicmimarlik@gmail.com" style="color: inherit; text-decoration: none;">2emicmimarlik@gmail.com</a>
+            </p>
+          </div>
+
+          <!-- Atölye -->
+          <div style="margin-bottom: 1rem;">
+            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent-gold); display: block; margin-bottom: 0.25rem;" data-tr="Atölye" data-en="Workshop">Atölye</span>
+            <p style="font-size: 0.85rem; line-height: 1.5; color: var(--text-muted);">
+              Hürriyet Mah.<br>
+              90. Sok. No:12/A<br>
+              Bağcılar / İstanbul
+            </p>
+          </div>
+
+          <!-- Haritada Görüntüle -->
+          <div>
+            <a href="https://www.google.com/maps/search/?api=1&query=2EM+İç+Mimarlık+Hürriyet+Mah.+90.+Sok.+No:12/A+Bağcılar+İstanbul" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 0.85rem; font-weight: 600; text-decoration: underline; display: inline-flex; align-items: center; gap: 0.35rem;" data-tr="Haritada Görüntüle →" data-en="View on Map →">Haritada Görüntüle →</a>
+          </div>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p data-tr="© 2026 LevaReon. Tüm Hakları Saklıdır." data-en="© 2026 LevaReon. All Rights Reserved.">© 2026 LevaReon. Tüm Hakları Saklıdır.</p>
-        <div style="display: flex; gap: 1rem; align-items: center;">
-          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.6rem; transition: transform 0.3s ease, color 0.3s ease; display: inline-flex; align-items: center;" aria-label="Instagram">
+        <p data-tr="© 2026 <a href='https://levareon.com.tr' target='_blank' rel='noopener noreferrer' class='footer-brand-link'>LevaReon</a>. Tüm Hakları Saklıdır." data-en="© 2026 <a href='https://levareon.com.tr' target='_blank' rel='noopener noreferrer' class='footer-brand-link'>LevaReon</a>. All Rights Reserved.">© 2026 <a href="https://levareon.com.tr" target="_blank" rel="noopener noreferrer" class="footer-brand-link">LevaReon</a>. Tüm Hakları Saklıdır.</p>
+        <div style="display: flex; gap: 1.25rem; align-items: center;">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.5rem; transition: transform 0.3s ease, color 0.3s ease; display: inline-flex; align-items: center;" aria-label="Instagram" title="Instagram">
             <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.5rem; transition: transform 0.3s ease, color 0.3s ease; display: inline-flex; align-items: center;" aria-label="LinkedIn" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" style="color: var(--accent-gold); font-size: 1.5rem; transition: transform 0.3s ease, color 0.3s ease; display: inline-flex; align-items: center;" aria-label="Pinterest" title="Pinterest">
+            <i class="fab fa-pinterest-p"></i>
           </a>
         </div>
       </div>
@@ -405,11 +458,25 @@
 
   <!-- ================= PROJECT DETAILS LIGHTBOX MODAL ================= -->
   <div class="modal-overlay" id="projectModal">
-    <div class="modal-content">
+    <div class="modal-content modal-content-project">
       <button class="modal-close" id="projectModalClose">&times;</button>
-      <img src="" alt="Proje Görseli" id="modalProjectImg"
-        style="width: 100%; max-height: 520px; object-fit: cover; border-radius: 4px; margin-bottom: 1.5rem;">
-      <button class="btn-primary" data-open-quote style="width: 100%; justify-content: center; padding: 1rem;" data-tr="Benzer Proje İçin Teklif Al <i class='fas fa-arrow-right'></i>" data-en="Get Quote For Similar Project <i class='fas fa-arrow-right'></i>">
+
+      <div class="modal-project-header">
+        <h3 id="modalProjectTitle" class="modal-project-title">Proje Detayı</h3>
+        <span id="modalProjectCounter" class="modal-project-counter">1 / 9</span>
+      </div>
+
+      <div class="modal-img-wrapper">
+        <button class="modal-nav modal-prev" id="projectModalPrev" aria-label="Önceki Proje" title="Önceki Proje">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <img src="" alt="Proje Görseli" id="modalProjectImg">
+        <button class="modal-nav modal-next" id="projectModalNext" aria-label="Sonraki Proje" title="Sonraki Proje">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <button class="btn-primary" data-open-quote style="width: 100%; justify-content: center; padding: 1rem; margin-top: 1.25rem;" data-tr="Benzer Proje İçin Teklif Al <i class='fas fa-arrow-right'></i>" data-en="Get Quote For Similar Project <i class='fas fa-arrow-right'></i>">
         Benzer Proje İçin Teklif Al <i class="fas fa-arrow-right"></i>
       </button>
     </div>
