@@ -1119,11 +1119,12 @@ section.process-section .btn-primary:hover {
   height: 380px;
   object-fit: cover;
   object-position: center 20%;
-  filter: none;
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: grayscale(80%);
+  transition: filter 0.4s ease, transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .team-card:hover .team-avatar {
+  filter: grayscale(0%);
   transform: scale(1.04);
 }
 
