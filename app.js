@@ -1137,7 +1137,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Selected top 9 showcase items for Konut, Mağaza, Ofis, and Restoran & Kafe
-  const topKonutIds = [804, 819, 853, 864, 852, 867, 815, 865, 888];
+  const topKonutIds = [804, 819, 853, 864, 852, 867, 815, 889, 888];
   const topMagazaIds = [901, 903, 915, 917, 925, 902, 913, 923, 930];
   const topOfisIds = [951, 952, 957, 959, 962, 963, 954, 956, 961];
   const topShowroomIds = [932, 933, 934, 935, 936, 937, 938, 939, 940];
@@ -1179,11 +1179,11 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
       projectsContainer.appendChild(bannerDiv);
 
-      // Attach click listeners for modal
+      // Attach click listeners for modal with exact items list
       gridDiv.querySelectorAll('.project-card').forEach(card => {
         card.addEventListener('click', () => {
-          const idx = parseInt(card.getAttribute('data-index'), 10);
-          openProjectModal(idx, 'all');
+          const id = parseInt(card.getAttribute('data-id'), 10);
+          openProjectModal(id, 'all', featuredItems);
         });
       });
       return;
@@ -1205,23 +1205,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // Prepare items list (If Konut, Mağaza, Ofis or Restoran-Kafe, prioritize the top 9 curated images first)
     let sortedList = [...allCategoryItems];
     if (filter === 'konut') {
-      const top9Konut = allCategoryItems.filter(item => topKonutIds.includes(item.id));
+      const top9Konut = topKonutIds.map(id => allCategoryItems.find(item => item.id === id)).filter(Boolean);
       const remainingKonut = allCategoryItems.filter(item => !topKonutIds.includes(item.id));
       sortedList = [...top9Konut, ...remainingKonut];
     } else if (filter === 'magaza') {
-      const top9Magaza = allCategoryItems.filter(item => topMagazaIds.includes(item.id));
+      const top9Magaza = topMagazaIds.map(id => allCategoryItems.find(item => item.id === id)).filter(Boolean);
       const remainingMagaza = allCategoryItems.filter(item => !topMagazaIds.includes(item.id));
       sortedList = [...top9Magaza, ...remainingMagaza];
     } else if (filter === 'ofis') {
-      const top9Ofis = allCategoryItems.filter(item => topOfisIds.includes(item.id));
+      const top9Ofis = topOfisIds.map(id => allCategoryItems.find(item => item.id === id)).filter(Boolean);
       const remainingOfis = allCategoryItems.filter(item => !topOfisIds.includes(item.id));
       sortedList = [...top9Ofis, ...remainingOfis];
     } else if (filter === 'showroom') {
-      const top9Showroom = allCategoryItems.filter(item => topShowroomIds.includes(item.id));
+      const top9Showroom = topShowroomIds.map(id => allCategoryItems.find(item => item.id === id)).filter(Boolean);
       const remainingShowroom = allCategoryItems.filter(item => !topShowroomIds.includes(item.id));
       sortedList = [...top9Showroom, ...remainingShowroom];
     } else if (filter === 'restoran-kafe') {
-      const top9Restoran = allCategoryItems.filter(item => topRestoranIds.includes(item.id));
+      const top9Restoran = topRestoranIds.map(id => allCategoryItems.find(item => item.id === id)).filter(Boolean);
       const remainingRestoran = allCategoryItems.filter(item => !topRestoranIds.includes(item.id));
       sortedList = [...top9Restoran, ...remainingRestoran];
     }
@@ -1237,7 +1237,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <i class="fas fa-eye text-gold" style="margin-right: 6px;"></i> Gösterilen: <strong style="color: #fff;">${itemsToDisplay.length} / ${sortedList.length} Görsel</strong>
         </span>
         <button class="small-outline-btn" id="topCollapseBtn" style="padding: 0.4rem 1.1rem; font-size: 0.78rem;">
-          <i class="fas fa-compress-alt"></i> İlk 9 Görsele Dön (Kapat)
+          <i class="fas fa-chevron-up"></i> Daha Az Göster
         </button>
       `;
       projectsContainer.appendChild(topBar);
@@ -1257,7 +1257,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const floatingBtn = document.createElement('button');
       floatingBtn.id = 'floatingCollapseWidget';
       floatingBtn.className = 'floating-collapse-btn';
-      floatingBtn.innerHTML = `<i class="fas fa-compress-alt"></i> İlk 9'a Dön (Kapat)`;
+      floatingBtn.innerHTML = `<i class="fas fa-compress-alt"></i> Daha Az Göster`;
       document.body.appendChild(floatingBtn);
 
       floatingBtn.addEventListener('click', () => {
@@ -1274,7 +1274,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gridDiv.innerHTML = itemsToDisplay.map((item, idx) => createProjectCardHTML(item, idx)).join('');
     projectsContainer.appendChild(gridDiv);
 
-    // Add Bottom Control Bar (+12 Yükle / Tümünü Aç / İlk 9'a Dön)
+    // Add Bottom Control Bar ("Devamını Gör" / "Daha Az Göster")
     if (sortedList.length > 9) {
       const loadMoreWrapper = document.createElement('div');
       loadMoreWrapper.className = 'load-more-wrapper';
@@ -1282,39 +1282,26 @@ document.addEventListener('DOMContentLoaded', () => {
       loadMoreWrapper.style.flexWrap = 'wrap';
 
       if (currentVisibleLimit < sortedList.length) {
-        const remainingCount = sortedList.length - currentVisibleLimit;
-        const nextBatchCount = Math.min(12, remainingCount);
-
         loadMoreWrapper.innerHTML = `
-          <button class="small-gold-btn" id="loadBatchBtn">
-            <i class="fas fa-plus-circle"></i> +${nextBatchCount} Fotoğraf Daha Yükle (${remainingCount} kalan)
-          </button>
-          <button class="small-outline-btn" id="loadAllBtn">
-            <i class="fas fa-images"></i> Tümünü Aç (${sortedList.length})
+          <button class="small-gold-btn" id="loadMoreBtn">
+            <i class="fas fa-chevron-down"></i> Devamını Gör
           </button>
         `;
 
         if (currentVisibleLimit > 9) {
           loadMoreWrapper.innerHTML += `
             <button class="small-outline-btn" id="bottomCollapseBtn">
-              <i class="fas fa-chevron-up"></i> İlk 9'a Dön (Kapat)
+              <i class="fas fa-chevron-up"></i> Daha Az Göster
             </button>
           `;
         }
 
         projectsContainer.appendChild(loadMoreWrapper);
 
-        const loadBatchBtn = loadMoreWrapper.querySelector('#loadBatchBtn');
-        if (loadBatchBtn) {
-          loadBatchBtn.addEventListener('click', () => {
-            renderProjects(filter, currentVisibleLimit + 12);
-          });
-        }
-
-        const loadAllBtn = loadMoreWrapper.querySelector('#loadAllBtn');
-        if (loadAllBtn) {
-          loadAllBtn.addEventListener('click', () => {
-            renderProjects(filter, sortedList.length);
+        const loadMoreBtn = loadMoreWrapper.querySelector('#loadMoreBtn');
+        if (loadMoreBtn) {
+          loadMoreBtn.addEventListener('click', () => {
+            renderProjects(filter, currentVisibleLimit + 9);
           });
         }
 
@@ -1332,7 +1319,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // All photos displayed -> show Collapse button
         loadMoreWrapper.innerHTML = `
           <button class="small-outline-btn" id="bottomCollapseBtn">
-            <i class="fas fa-chevron-up"></i> İlk 9 Görsele Dön (Kapat)
+            <i class="fas fa-chevron-up"></i> Daha Az Göster
           </button>
         `;
         projectsContainer.appendChild(loadMoreWrapper);
@@ -1350,11 +1337,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Attach click listeners to cards for modal lightbox
+    // Attach click listeners to cards for modal lightbox - MATCHES EXACT ITEM BY ID AND CURRENT SORTED LIST
     gridDiv.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', () => {
-        const idx = parseInt(card.getAttribute('data-index'), 10);
-        openProjectModal(idx, filter);
+        const id = parseInt(card.getAttribute('data-id'), 10);
+        openProjectModal(id, filter, sortedList);
       });
     });
   }
@@ -1413,22 +1400,29 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalCounter) modalCounter.textContent = `${currentProjectIndex + 1} / ${activeModalList.length}`;
   }
 
-  function openProjectModal(indexInActiveList, categoryFilter = null) {
+  function openProjectModal(targetIdOrIndex, categoryFilter = null, customSortedList = null) {
     if (!projectModal) return;
 
-    const filterToUse = categoryFilter !== null ? categoryFilter : currentFilter;
-    if (filterToUse && filterToUse !== 'all') {
-      activeModalList = projectItems.filter(p => p.category === filterToUse);
+    if (customSortedList && Array.isArray(customSortedList) && customSortedList.length > 0) {
+      activeModalList = [...customSortedList];
     } else {
-      activeModalList = [...projectItems];
+      const filterToUse = categoryFilter !== null ? categoryFilter : currentFilter;
+      if (filterToUse && filterToUse !== 'all') {
+        activeModalList = projectItems.filter(p => p.category === filterToUse);
+      } else {
+        activeModalList = [...projectItems];
+      }
     }
 
-    if (typeof indexInActiveList === 'number' && indexInActiveList >= 0 && indexInActiveList < activeModalList.length) {
-      currentProjectIndex = indexInActiveList;
-    } else {
-      currentProjectIndex = 0;
+    let foundIndex = -1;
+    if (typeof targetIdOrIndex === 'number') {
+      foundIndex = activeModalList.findIndex(p => p.id === targetIdOrIndex);
+      if (foundIndex === -1 && targetIdOrIndex >= 0 && targetIdOrIndex < activeModalList.length) {
+        foundIndex = targetIdOrIndex;
+      }
     }
 
+    currentProjectIndex = foundIndex !== -1 ? foundIndex : 0;
     updateModalProject();
     projectModal.classList.add('active');
   }
@@ -1525,14 +1519,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const encodedMsg = encodeURIComponent(messageText);
-      const wa1 = `https://wa.me/905518601842?text=${encodedMsg}`;
-      const wa2 = `https://wa.me/905374478191?text=${encodedMsg}`;
+      const waUrl = `https://wa.me/905518601842?text=${encodedMsg}`;
 
-      // Open BOTH WhatsApp numbers directly in separate tabs
-      window.open(wa1, '_blank');
-      setTimeout(() => {
-        window.open(wa2, '_blank');
-      }, 300);
+      // Open Emre Gökbayrak WhatsApp directly
+      window.open(waUrl, '_blank');
 
       // Close modal cleanly immediately
       if (quoteModal) {
