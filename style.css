@@ -178,20 +178,28 @@ h1, h2, h3, h4, .font-serif {
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: 2.25rem;
+  gap: 1.35rem;
   list-style: none;
+  white-space: nowrap;
+}
+
+@media (min-width: 1400px) {
+  .nav-menu {
+    gap: 1.85rem;
+  }
 }
 
 .nav-link {
   color: var(--text-muted);
   text-decoration: none;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.08em;
   transition: var(--transition-fast);
   position: relative;
-  padding: 0.5rem 0;
+  padding: 0.4rem 0;
+  white-space: nowrap;
 }
 
 .nav-link::after {
@@ -1435,7 +1443,7 @@ section.process-section .btn-primary:hover {
 }
 
 /* Responsive Overrides */
-@media (max-width: 991px) {
+@media (max-width: 1180px) {
   .nav-menu {
     position: fixed;
     top: 0;
@@ -1449,8 +1457,14 @@ section.process-section .btn-primary:hover {
     justify-content: center;
     align-items: flex-start;
     padding: 3rem 2.5rem;
+    gap: 1.5rem;
     transition: right 0.4s ease;
     z-index: 999;
+  }
+
+  .nav-menu .nav-link {
+    font-size: 1.05rem;
+    letter-spacing: 0.1em;
   }
 
   .nav-menu.active {
@@ -1465,7 +1479,6 @@ section.process-section .btn-primary:hover {
   .nav-actions {
     border-left: none;
     padding-left: 0;
-    margin-top: 1.5rem;
   }
 }
 
