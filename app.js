@@ -1220,9 +1220,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filter === 'all') {
       currentVisibleLimit = 9;
-      // User requested 9 curated project photos for 'Tümü' tab (1001 to 1009)
-      const featuredIds = [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009];
-      let featuredItems = projectItems.filter(item => featuredIds.includes(item.id));
+      // User requested 9 curated project photos for 'Tümü' tab (3rd and 7th swapped)
+      const featuredIds = [1001, 1002, 1007, 1004, 1005, 1006, 1003, 1008, 1009];
+      let featuredItems = featuredIds.map(id => projectItems.find(item => item.id === id)).filter(Boolean);
 
       const gridDiv = document.createElement('div');
       gridDiv.className = 'projects-grid';
