@@ -69,6 +69,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const projectItems = [
     {
+      id: 1001,
+      category: 'magaza',
+      categoryTag: 'MAĞAZA & SHOWROOM',
+      title: 'CEMDEN Lüks Giyim & Mağaza İç Mimari Tasarımı',
+      image: 'assets/projects/new_project_1.jpg'
+    },
+    {
+      id: 1002,
+      category: 'showroom',
+      categoryTag: 'SHOWROOM & STÜDYO',
+      title: 'Modern Loft Beton Panel & Kaktüslü Fotoğraf Stüdyosu',
+      image: 'assets/projects/new_project_2.jpg'
+    },
+    {
+      id: 1003,
+      category: 'konut',
+      categoryTag: 'MUTFAK & KONUT',
+      title: 'Calacatta Mermer Adalı & Ankastre Lüks Mutfak Tasarımı',
+      image: 'assets/projects/new_project_3.jpg'
+    },
+    {
+      id: 1004,
+      category: 'restoran-kafe',
+      categoryTag: 'RESTORAN & ŞARKÜTERİ',
+      title: 'Gurme Şarküteri & Ahşap Tavanlı Teşhir Reyonları',
+      image: 'assets/projects/new_project_4.jpg'
+    },
+    {
+      id: 1005,
+      category: 'restoran-kafe',
+      categoryTag: 'RESTORAN & KAFE',
+      title: 'Cam Tavanlı Ahşap Kış Bahçesi & Veranda Restoran Salonu',
+      image: 'assets/projects/new_project_5.jpg'
+    },
+    {
+      id: 1006,
+      category: 'ic-mekanlar',
+      categoryTag: 'SPA & TÜRK HAMAMI',
+      title: 'Yeşil Mermer & Turkuaz Çini Detaylı Lüks Türk Hamamı & Spa',
+      image: 'assets/projects/new_project_6.jpg'
+    },
+    {
+      id: 1007,
+      category: 'magaza',
+      categoryTag: 'MAĞAZA & KUYUMCU',
+      title: 'Gold Detaylı & Oval Aynalı Lüks Kuyumcu / Takı Mağazası',
+      image: 'assets/projects/new_project_7.jpg'
+    },
+    {
+      id: 1008,
+      category: 'konut',
+      categoryTag: 'ÇOCUK & GENÇ ODASI',
+      title: 'Yeşil & Krem Lake Kapaklı İkili Genç Odası & Çalışma Masası',
+      image: 'assets/projects/new_project_8.jpg'
+    },
+    {
+      id: 1009,
+      category: 'ofis',
+      categoryTag: 'OFİS & SALON',
+      title: 'Ahşap Duvar Panelli TV Ünitesi & Özel Ofis Lounge Alanı',
+      image: 'assets/projects/new_project_9.jpg'
+    },
+    {
       id: 701,
       category: 'ic-mekanlar',
       categoryTag: 'İÇ MEKAN',
@@ -1157,13 +1220,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (filter === 'all') {
       currentVisibleLimit = 9;
-      // Top 9 curated showcase photos across categories
-      const featuredIds = [804, 702, 819, 853, 710, 864, 852, 735, 867];
+      // User requested 9 curated project photos for 'Tümü' tab (1001 to 1009)
+      const featuredIds = [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009];
       let featuredItems = projectItems.filter(item => featuredIds.includes(item.id));
-      
-      if (featuredItems.length < 9) {
-        featuredItems = projectItems.slice(0, 9);
-      }
 
       const gridDiv = document.createElement('div');
       gridDiv.className = 'projects-grid';
@@ -1471,7 +1530,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 6. Interactive Quote ve Consultation Modal Logic
+  // 6. Interactive Quote ve Consultation Modal Logic & Subpage Handlers
   const quoteModal = document.getElementById('quoteModal');
   const quoteModalClose = document.getElementById('quoteModalClose');
   const triggerButtons = document.querySelectorAll('[data-open-quote]');
@@ -1479,7 +1538,24 @@ document.addEventListener('DOMContentLoaded', () => {
   triggerButtons.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      if (quoteModal) quoteModal.classList.add('active');
+      if (quoteModal) {
+        quoteModal.classList.add('active');
+      } else {
+        // Subpage WhatsApp Direct Redirect
+        const pageTitle = document.title || '2EM İç Mimarlık Danışmanlık';
+        const msg = encodeURIComponent(`Merhaba 2EM İç Mimarlık, "${pageTitle}" sayfanızdan bilgi ve teklif almak istiyorum.`);
+        window.open(`https://wa.me/905518601842?text=${msg}`, '_blank');
+      }
+    });
+  });
+
+  // FAQ Accordion Handler for Articles & GEO Landing Pages
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const parent = q.closest('.faq-item');
+      if (parent) {
+        parent.classList.toggle('active');
+      }
     });
   });
 
